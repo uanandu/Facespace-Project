@@ -16,7 +16,7 @@ const getUserById = (req, res) => {
     : sendResponse(res, 404, null, "user not found");
 };
 
-// POST
+// POST for sign-in
 const handleSignIn = (req, res) => {
   const { member } = req.body;
   let signedUser = res.locals.users.find((user) => {
@@ -24,14 +24,11 @@ const handleSignIn = (req, res) => {
   });
 
 // console.log(signedUser);
-
   if (signedUser) {
      res.status(200).json({
        status:"ok", data: signedUser
      })
-  }
-
-  else{
+  } else{
     res.status(400).json({
       status:"error", msg:"invalid user"
     })
