@@ -5,12 +5,10 @@ import { UserContext } from "../context/userContext";
 
 export const SignIn = () => {
   const {
-    users,
     userName,
     status,
     setUserName,
     setStatus,
-    userInfo,
     setUserInfo,
   } = useContext(UserContext);
 

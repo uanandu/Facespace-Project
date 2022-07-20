@@ -11,7 +11,6 @@ export const HomePage = () => {
   // console.log("user-information", userInfo);
   // console.log("status", status);
 
-
   return (
     <>
       <Wrapper>
@@ -37,7 +36,9 @@ export const HomePage = () => {
                   <UserHere to={`/users/${user.id}`}>
                     {userInfo.friends.includes(user.id) && (
                       <ImageZone>
-                        <FriendOrFoe>Friend</FriendOrFoe>
+                        {/* <FriendWrap> */}
+                            <FriendOrFoe>Friend</FriendOrFoe>
+                        {/* </FriendWrap> */}
                         <UserAvatar src={user.avatarUrl} alt={user.name} />
                       </ImageZone>
                     )}
@@ -83,6 +84,7 @@ const UserHere = styled(NavLink)`
 `;
 
 const ImageZone = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -99,21 +101,32 @@ const UserAvatar = styled.img`
   }
 `;
 
-const FriendOrFoe = styled.p`
-  --f: 10px; /* control the folded part*/
-  --r: 15px; /* control the ribbon shape */
-  --t: 10px; /* the top offset */
-  text-align: center;
-  text-decoration: none;
+const FriendOrFoe = styled.span`
   color: white;
   font-family: var(--heading-font-family);
-  position: relative;
-  inset: var(--t) calc(-1*var(--f)) auto auto;
-  padding: 0 10px var(--f) calc(10px + var(--r));
-  clip-path: 
-    polygon(0 0,100% 0,100% calc(100% - var(--f)),calc(100% - var(--f)) 100%,
-      calc(100% - var(--f)) calc(100% - var(--f)),0 calc(100% - var(--f)),
-      var(--r) calc(50% - var(--f)/2));
-  background: var(--primary-color);
-  box-shadow: 0 calc(-1*var(--f)) 0 inset #0005;
+  position: absolute;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 25px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  width: 85px;
+  display: block;
+  background: #f5431a;
+  box-shadow: 0 0 10px 3px #ff6e4e;
+  position: absolute;
+  top: 10px; 
+  right: -15px;
+  border-radius: 5px;
 `;
+
+const FriendWrap = styled.div`
+  position: relative;
+  right: 0; top: 0px;
+  z-index: 1;
+  overflow: hidden;
+  width: 100px; 
+  height: 100px;
+  text-align: right;
+`;
+
