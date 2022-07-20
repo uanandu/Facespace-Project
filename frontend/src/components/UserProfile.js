@@ -40,6 +40,7 @@ export const UserProfile = () => {
             height="600"
             src="https://giphy.com/embed/6kJzm03lRcUOaL18g8/video"
             width="100%"
+            title="GIF"
           />
         </Banner>
         <UserProfileWrapper>
