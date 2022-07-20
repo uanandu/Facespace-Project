@@ -24,19 +24,44 @@ export const SignIn = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const userCheck = users.find((user) => {
-      return user.name.toLowerCase() === userName.toLowerCase();
-    });
+    fetch ("/api/signIn",{
+      method:"POST", 
+      headers:{
+       "Content-Type": "application/json",
+       "Accept": "application/json",
+      },
+      body : JSON.stringify({ member : userName })
+ //the key member in frontend has to match the backend 
+     })
+     .then((res)=>res.json())
+     .then((data)=>{
+      console.log(data.data)
+         if(data.status==="error"){
+           window.alert(data.msg)
+         }
+         else{
+          setStatus(true) 
+          setUserName(userName);
+          setUserInfo(data.data);
+          sessionStorage.setItem("member", JSON.stringify(data.data)); 
+           history.push("/");
+         }
+     })
 
-    if (userCheck) {
-      setStatus(true);
-      setUserName(userName);
-      setUserInfo(userCheck);
-      sessionStorage.setItem("user-name", userName);
-      history.push("/");
-    } else {
-      alert("User not found");
-    }
+
+    // const userCheck = users.find((user) => {
+    //   return user.name.toLowerCase() === userName.toLowerCase();
+    // });
+
+    // if (userCheck) {
+    //   setStatus(true);
+    //   setUserName(userName);
+    //   setUserInfo(userCheck);
+    //   sessionStorage.setItem("user-name", userName);
+    //   history.push("/");
+    // } else {
+    //   alert("User not found");
+    // }
 
     // users.forEach((user) => {
     //   if (user.name === userName) {
