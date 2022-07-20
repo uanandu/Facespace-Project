@@ -43,7 +43,10 @@ export const UserProfile = () => {
           />
         </Banner>
         <UserProfileWrapper>
-          <UserProfileImage src={user.avatarUrl} alt="user profile" />
+          <UserInfo>
+            <UserProfileImage src={user.avatarUrl} alt="user profile" />
+            <UserName>{user.name}</UserName>
+          </UserInfo>
           <UserFriendsTitle>{user.name}'s friends</UserFriendsTitle>
           <UserFriendsList>
             <Friends key={id} friendIDs={friendsID} />
@@ -61,7 +64,6 @@ const Banner = styled.div`
   width: 100%;
   z-index: -1;
   margin-bottom: 350px;
-
 `;
 const UserProfileWrapper = styled.div`
   display: flex;
@@ -85,13 +87,13 @@ const UserFriendsTitle = styled.h1`
 const UserFriendsList = styled.div`
   margin: 20px;
 `;
-const UserFriendsListItem = styled.li``;
-const UserFriendsListItemImage = styled.img`
-  width: var(--user-img-width);
-  height: var(--user-img-width);
-  border-radius: 50%;
-  &:hover {
-    cursor: pointer;
-    border: 8px solid var(--primary-color);
-  }
-`;
+
+const UserInfo = styled.div`
+  display: flex;
+  align-items: center;
+`
+const UserName = styled.h1`
+  font-size: 40px;
+  margin: 0 20px;
+  text-align: center;
+`
