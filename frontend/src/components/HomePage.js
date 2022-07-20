@@ -36,9 +36,7 @@ export const HomePage = () => {
                   <UserHere to={`/users/${user.id}`}>
                     {userInfo.friends.includes(user.id) && (
                       <ImageZone>
-                        {/* <FriendWrap> */}
                             <FriendOrFoe>Friend</FriendOrFoe>
-                        {/* </FriendWrap> */}
                         <UserAvatar src={user.avatarUrl} alt={user.name} />
                       </ImageZone>
                     )}
@@ -118,15 +116,5 @@ const FriendOrFoe = styled.span`
   top: 10px; 
   right: -15px;
   border-radius: 5px;
-`;
-
-const FriendWrap = styled.div`
-  position: relative;
-  right: 0; top: 0px;
-  z-index: 1;
-  overflow: hidden;
-  width: 100px; 
-  height: 100px;
-  text-align: right;
 `;
 
