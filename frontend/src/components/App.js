@@ -1,17 +1,27 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import styled from "styled-components";
 import GlobalStyles from "./GlobalStyles";
+import { HomePage } from "./HomePage";
+import {NavBar} from "./NavBar";
+import { SignIn } from "./SignIn";
+import { UserProfile } from "./UserProfile";
+
 
 const App = () => {
   return (
     <BrowserRouter>
+      <NavBar/>
       <GlobalStyles />
       <div>
         <Switch>
           <Route exact path="/">
-            Homepage
+            <HomePage/>
           </Route>
-          <Route path="/page-1">Page 1</Route>
+          <Route exact path="/users/:id">
+            <UserProfile/>
+          </Route>
+          <Route exact path="/signin">
+            <SignIn/>
+          </Route>
         </Switch>
       </div>
     </BrowserRouter>
