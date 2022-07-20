@@ -17,7 +17,8 @@ export const Friends = ({ friendIDs }) => {
                     if (userID.id === friendId) {
                         return (
                             <Friend key={userID.id} to={`/users/${friendId}`}>
-                                <FriendAvatar src={userID.avatarUrl} alt={userID.name}/>   
+                                <FriendAvatar src={userID.avatarUrl} alt={userID.name}/>  
+                                <FriendName>{userID.name}</FriendName>
                             </Friend>
                         )
                     }
@@ -35,13 +36,22 @@ const Wrapper = styled.div`
     display: flex;
     align-items: center;
 `
-const Friend = styled(NavLink)``;
+const Friend = styled(NavLink)`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0.5rem;
+    text-decoration: none;
+`;
 const FriendAvatar = styled.img`
     width: var(--user-img-width);
   height: var(--user-img-width);
   border-radius: 50%;
+  margin: 5px;
   &:hover {
     cursor: pointer;
     border: 8px solid var(--primary-color);
   }
 `;
+
+const FriendName = styled.h3``;

@@ -77,7 +77,9 @@ const ProfilesHere = styled.div`
 `;
 
 const Profile = styled.div``;
-const UserHere = styled(NavLink)``;
+const UserHere = styled(NavLink)`
+  text-decoration: none;
+`;
 
 const ImageZone = styled.div`
   display: flex;
